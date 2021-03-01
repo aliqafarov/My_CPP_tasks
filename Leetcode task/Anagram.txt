@@ -1,0 +1,50 @@
+4)Anagram
+
+bool func(string s, string b)
+{
+	bool check = false;
+	if (s.length() != b.length()) return false ;
+	const int size = b.length();
+	int* arr=new int [size];
+	int index = -1;
+	for (int i = 0; i <size; i++)
+	{
+		bool bigCheck = false;
+		for (int j = 0; j < size; j++)
+		{
+			bool check = false;
+			if (s[i] == b[j])
+			{
+				if (index != -1)
+				{
+					for (int c = 0; c < index+1; c++)
+					{
+						if (j == arr[c]) check = true;
+					}
+				}
+				
+				if (check == false)
+				{
+					arr[index] = j;
+					index++;
+					bigCheck = true;
+					break;
+				}
+				
+			}
+
+		}
+
+		if (bigCheck == false) return false;
+	}
+
+	// delete [] arr;
+	return true;
+}
+int main()
+{
+	string s = "meslehet";
+	string b = "semlehet";
+
+	cout<<func(s, b);
+}

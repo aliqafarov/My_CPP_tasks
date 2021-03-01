@@ -1,0 +1,117 @@
+2)Array from of integer
+
+class Solution 
+{
+public:
+    vector<int> addToArrayForm(vector<int>& A, int K)
+    {
+        unsigned long long number = 0;
+    if(A.size()>=20)
+    {
+        int digit= A.size()-19;
+        bool check=false;
+        if(A[digit]==0) check =true;
+        for (int i = digit; i < A.size(); i++)
+        {
+          number = number * 10 + A[i];
+        }
+     
+    number = number + K;
+    vector <int> C;
+     if(number==0)
+     {
+         C.push_back(0);
+         return C;
+     }
+     else if(number<10)
+     {
+         C.push_back(number);
+         return C;
+     }
+   unsigned long long test = number;
+    int _count=0;
+    while (test != 0)
+    {
+        test = test / 10;
+        
+        _count++;
+    }
+     test = number;
+     int arr[1000];
+        int k=0;
+        if (check == true)
+        {
+            _count++;
+            arr[_count-1] = 0;
+            for (int i = 0; i < _count-1; i++)
+            {
+                arr[i] = test % 10;
+                test = test / 10;
+            }
+        }
+        else
+        {
+            for (int i =0; i < _count; i++)
+            {
+                arr[i] = test % 10;
+                test = test / 10;
+            }
+        }
+        int sum =digit + _count;
+        for (int i = _count, j = digit-1; i < sum; i++, j--)
+        {
+            arr[i] = A[j];
+        }
+        
+    for (int i = sum-1,j=0; i != -1; i--,j++)
+    {
+       C.push_back(arr[i]);
+    }
+       return  C;  
+    }
+        
+        
+        
+        
+        
+   else{  
+    for (int i = 0; i < A.size(); i++)
+    {
+        number = number * 10 + A[i];
+    }
+     
+    number = number + K;
+    vector <int> C;
+     if(number==0)
+     {
+         C.push_back(0);
+         return C;
+     }
+     else if(number<10)
+     {
+         C.push_back(number);
+         return C;
+     }
+   unsigned long long test = number;
+    int _count=0;
+    while (test != 0)
+    {
+        test = test / 10;
+        
+        _count++;
+    }
+     test = number;
+     int arr[100];
+    for(int i=0; i<_count;i++)
+    {
+        arr[i]=test%10;
+        test = test / 10;
+    }
+    for (int i = _count-1,j=0; i != -1; i--,j++)
+    {
+       C.push_back(arr[i]);
+    }
+       return  C;  
+    }
+    }
+};

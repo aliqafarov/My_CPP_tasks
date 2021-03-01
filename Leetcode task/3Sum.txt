@@ -1,0 +1,66 @@
+3)3sum
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) 
+    {
+      int arr[100][3];
+	int arr2[100];
+	int sumArr[10];
+	vector <int> arr3[100];
+	vector < vector<int> >name;
+	int size = nums.size();
+    if(size<3) return name;
+	for (int i = 0; i < size; i++)
+	{
+		arr2[i] = nums[i];
+	}
+	int index = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (j == i) j++;
+
+			for (int k = 0; k < size; k++)
+			{
+				while (true)
+				{
+					if (i == k || j == k)
+					{
+						k++;
+					}
+					else break;
+				}
+				bool checked = false;
+				int sum = i + j + k;
+				if (index != 0)
+				{
+					for (int d = 0; d < index; d++)
+					{
+						if (sum == sumArr[d])
+						{
+							checked = true;
+							break;
+						}
+					}
+				}
+				
+				if (arr2[i] + arr2[j] + arr2[k] == 0 &&checked==false)
+				{
+					arr[index][0] = arr2[i];
+					arr[index][1] = arr2[j];
+					arr[index][2] = arr2[k];
+					arr3[index].push_back(arr2[i]);
+					arr3[index].push_back(arr2[j]);
+					arr3[index].push_back(arr2[k]);
+					name.push_back(arr3[index]);
+					sumArr[index] = i + j + k;
+					index++;
+				}
+			}
+		}
+	}
+        return name;
+    }
+};
